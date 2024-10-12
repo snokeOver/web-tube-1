@@ -1,25 +1,19 @@
-import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from "lucide-react";
+import { ArrowLeft, Bell, Mic, Search, Upload, User } from "lucide-react";
 import Button from "./Button";
 import { useState } from "react";
+import TitleIcon from "./TitleIcon";
+
+export type TitleIconProps = {
+  isHidden?: boolean;
+};
 
 const Navbar = () => {
   const [showFullSearch, setShowFullSearch] = useState(false);
+
   return (
     <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
       {/* Left part: Icon and logo part */}
-      <div
-        className={`${
-          showFullSearch ? "hidden" : "flex"
-        }  gap-4 items-center flex-shrink-0`}
-      >
-        <Button variant="ghost" size={"icon"}>
-          <Menu />
-        </Button>
-        <a href="/">
-          <img src={"Logo.png"} className="h-6 w-full" alt="logo" />
-        </a>
-      </div>
-
+      <TitleIcon isHidden={showFullSearch} />
       {/* Search Bar */}
       <form
         className={`md:flex gap-4 justify-center flex-grow  ${
